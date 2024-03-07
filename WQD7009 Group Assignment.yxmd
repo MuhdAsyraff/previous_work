@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2023.2" RunE2="T">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\asyra\Downloads\exchange_rate_ml_data.csv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>,</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText><![CDATA[exchange_rate.csv
+]]></AnnotationText>
+          <DefaultAnnotationText>exchange_rate_ml_data.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Year" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="Month" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_CAD" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_AUD" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_JPY100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_THB100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_HKD100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_SAR100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_PHP100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_IDR100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_BND" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_KRW100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_GBP" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_SGD" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_SDR" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_CHF" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_CNY" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_USD" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_TWD100" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+            <Field name="avg_EUR" size="254" source="File: C:\Users\asyra\Downloads\exchange_rate_ml_data.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="174" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[Year] &gt;= "2007"</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[Year] &gt;= "2007"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="282" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="[Year] + &quot;-&quot; + [Month]&#xA;" field="Timestamp" size="204" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Timestamp = [Year] + "-" + [Month]
+
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="426" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Timestamp" selected="True" />
+            <SelectField field="Year" selected="False" />
+            <SelectField field="Month" selected="False" />
+            <SelectField field="avg_CAD" selected="True" />
+            <SelectField field="avg_AUD" selected="True" />
+            <SelectField field="avg_JPY100" selected="True" />
+            <SelectField field="avg_THB100" selected="True" />
+            <SelectField field="avg_HKD100" selected="True" />
+            <SelectField field="avg_SAR100" selected="True" />
+            <SelectField field="avg_PHP100" selected="True" />
+            <SelectField field="avg_IDR100" selected="True" />
+            <SelectField field="avg_BND" selected="True" />
+            <SelectField field="avg_KRW100" selected="True" />
+            <SelectField field="avg_GBP" selected="True" />
+            <SelectField field="avg_SGD" selected="True" />
+            <SelectField field="avg_SDR" selected="True" />
+            <SelectField field="avg_CHF" selected="True" />
+            <SelectField field="avg_CNY" selected="True" />
+            <SelectField field="avg_USD" selected="True" />
+            <SelectField field="avg_TWD100" selected="True" />
+            <SelectField field="avg_EUR" selected="True" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="558" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="0">C:\Users\asyra\Downloads\processed_exchange_rate.csv</File>
+          <Passwords />
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>28591</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>processed_exchange_rate.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="True" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="True" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>WQD7009 Group Assignment</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="d8fb7c03-7ce5-4a2a-bee2-0a2b09b5c613" />
+      <Telemetry>
+        <PreviousWorkflowId value="9e9f6fdc-2b54-4272-adaf-5a8ec27d0a81" />
+        <OriginWorkflowId value="9e9f6fdc-2b54-4272-adaf-5a8ec27d0a81" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
